@@ -18,8 +18,7 @@ module BookModule
     published_date = date_input('Date of publication [yyyy-mm-dd]: ')
     print 'Publisher: '
     publisher = gets.chomp
-    print "Cover state (Enter 'good' or 'bad'): "
-    cover_state = gets.chomp
+    cover_state = letter_input("Cover state (Enter 'good' or 'bad'): ", %w[GOOD BAD]).downcase
     new_label = Label.new(title, color)
     new_book = Book.new(title, published_date, publisher, cover_state)
     new_book.label = new_label
