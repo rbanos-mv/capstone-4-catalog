@@ -35,7 +35,7 @@ class Item
   private
 
   def can_be_archived?
-    # There are 315_532_800/315_619_200 seconds in 10 years
-    (Time.now - @publish_date) > 315_619_200
+    # There are 3652-3653 days in 10 years
+    (Date.today - @publish_date).to_i > 3652
   end
 end
