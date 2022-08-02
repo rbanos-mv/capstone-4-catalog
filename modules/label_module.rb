@@ -3,13 +3,9 @@ module LabelModule
 
   def ask_label_data
     # implementation
-    
   end
 
   def add_label
     # implementation
-
   end
-
-  
 end
