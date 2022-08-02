@@ -8,7 +8,7 @@ module LabelModule
   def add_label
     # implementation
   end
-  
+
   def list_labels
     # implementation
   end

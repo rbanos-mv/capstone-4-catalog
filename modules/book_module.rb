@@ -15,6 +15,4 @@ module BookModule
   def list_books
     # implementation
   end
-
-  
 end
