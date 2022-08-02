@@ -10,6 +10,7 @@ class Genre
 
   def add_item(item)
     @items << item unless @items.any? { |a| a.id == item.id }
+    item.genre = self unless item.genre == self
   end
 
   def to_s
