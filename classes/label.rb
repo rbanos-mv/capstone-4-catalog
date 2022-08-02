@@ -13,7 +13,7 @@ class Label
 
   def add_item(item)
     # implementation
-    @item = item
-    item.label << self
+    @items << item
   end
+  
 end
