@@ -13,7 +13,8 @@ class Label
 
   def add_item(item)
     # implementation
-    @items << item
+    @items << item unless @items.include?(item)
+    item.label=self unless item.label==self
   end
   
 end

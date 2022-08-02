@@ -22,7 +22,8 @@ RSpec.describe Label do
     end
 
     it 'checks if label contains items' do
-      expect(@label.add_item(@item)).to include(@item)
+      @label.add_item(@item)
+      expect(@label.items).to include(@item)
     end
   end
 end

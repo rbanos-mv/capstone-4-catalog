@@ -23,6 +23,7 @@ module BookModule
     cover_state = gets.chomp
     new_label = Label.new(title, color)
     new_book = Book.new(published_date, publisher, cover_state)
+    new_book.label=new_label
     @books.push(new_book)
     @labels.push(new_label)
   end
