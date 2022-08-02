@@ -35,7 +35,7 @@ module BookModule
       puts 'Book list is empty. Choose option (7) to add a book'
     else
       @books.map do |book|
-        puts "Publication Date: #{book.publish_date.strftime("%Y-%m-%d")}, Publisher: #{book.publisher}, \
+        puts "Publication Date: #{book.publish_date.strftime('%Y-%m-%d')}, Publisher: #{book.publisher}, \
 State: #{book.cover_state}"
       end
     end
