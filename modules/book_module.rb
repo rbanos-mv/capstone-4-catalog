@@ -1,3 +1,6 @@
+require './classes/book'
+require './classes/label'
+
 module BookModule
   # Team member 1
 
