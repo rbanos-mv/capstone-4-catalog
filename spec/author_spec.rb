@@ -15,7 +15,7 @@ RSpec.describe Author do
   end
 
   it 'should add_item' do
-    game1 = Game.new(Date.parse('2016-03-26'), Date.parse('2018-07-01'), false)
+    game1 = Game.new('Titulo', Date.parse('2016-03-26'), Date.parse('2018-07-01'), false)
     author1 = Author.new('Juan', 'Leyrado')
 
     author1.add_item(game1)
