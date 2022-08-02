@@ -9,11 +9,14 @@ class Game < Item
     @multiplayer = multiplayer
   end
 
+  def move_to_archive
+    @archived = true if can_be_archived?
+  end
+
   private
 
   def can_be_archived?
     # implementation, 2 years with one leap year
-    true if super && (Time.now - @last_played_at) > 63_158_400
-    false
+    super && (Date.today - @last_played_at).to_i > 631
   end
 end
