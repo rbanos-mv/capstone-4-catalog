@@ -1,4 +1,5 @@
 require_relative './test_helper'
+require_relative '../classes/author.rb'
 
 # Team member 3
 RSpec.describe Author do

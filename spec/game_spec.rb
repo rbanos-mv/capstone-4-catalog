@@ -1,9 +1,11 @@
 require_relative './test_helper'
+require_relative '../classes/item.rb'
+require_relative '../classes/game.rb'
 
 # Team member 3
 RSpec.describe Game do
   it 'should be an instance of Game' do
-    game = Game.new(25 / 0o7 / 2020, 22 / 0o7 / 2022, true)
+    game = Game.new('25/07/2020', '22/07/2022', true)
 
     expect(game).to be_an_instance_of(Game)
   end
