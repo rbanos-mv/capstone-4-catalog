@@ -1,6 +1,7 @@
 class Author
   # Team member 3
   attr_accessor :first_name, :last_name
+
   def initialize(first_name, last_name, id = Random.rand(1..1000))
     # constructor
     @id = id
