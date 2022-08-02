@@ -6,7 +6,6 @@ module BookModule
 
   def ask_book_data
     # implementation
-    
   end
 
   def add_book
@@ -23,7 +22,7 @@ module BookModule
     cover_state = gets.chomp
     new_label = Label.new(title, color)
     new_book = Book.new(published_date, publisher, cover_state)
-    new_book.label=new_label
+    new_book.label = new_label
     @books.push(new_book)
     @labels.push(new_label)
   end
@@ -36,9 +35,9 @@ module BookModule
       puts 'Book list is empty. Choose option (7) to add a book'
     else
       @books.map do |book|
-        puts "Publication Date: #{book.publish_date.strftime("%Y-%m-%d")}, Publisher: #{book.publisher}, State: #{book.cover_state}"
+        puts "Publication Date: #{book.publish_date.strftime("%Y-%m-%d")}, Publisher: #{book.publisher}, \
+State: #{book.cover_state}"
       end
     end
   end
-  
 end

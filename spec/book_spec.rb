@@ -34,5 +34,5 @@ RSpec.describe Book do
     it 'checks if book can be achived' do
       expect(@book3.can_be_archived?).to eq true
     end
-end
+  end
 end
