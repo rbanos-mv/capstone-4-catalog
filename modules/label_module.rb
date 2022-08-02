@@ -17,7 +17,7 @@ module LabelModule
       puts 'No labels found. Choose option (7) to add a book with label'
     else
       @labels.map do |label|
-        puts "Title: #{label.title]}, Color: #{labelcolor]}"
+        puts "Title: #{label.title}, Color: #{label.color}"
       end
     end
   end
