@@ -6,7 +6,7 @@ RSpec.describe Label do
   context 'Testing Label class' do
     before :each do
       @label = Label.new('Title1', 'Red')
-      @item = Item.new('2020-03-12')
+      @item = Item.new('Title1', '2020-03-12')
     end
 
     it 'returns instance of Label' do

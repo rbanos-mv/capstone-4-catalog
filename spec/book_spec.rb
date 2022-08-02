@@ -6,9 +6,9 @@ require 'date'
 RSpec.describe Book do
   context 'Testing Book class' do
     before :each do
-      @book1 = Book.new(Date.parse('2009-07-22'), 'Juan1', 'good')
-      @book2 = Book.new(Date.parse('2021-07-25'), 'Juan2', 'good')
-      @book3 = Book.new(Date.parse('2018-10-06'), 'Juan3', 'bad')
+      @book1 = Book.new('Title1', Date.parse('2009-07-22'), 'Juan1', 'good')
+      @book2 = Book.new('Title2', Date.parse('2021-07-25'), 'Juan2', 'good')
+      @book3 = Book.new('Title3', Date.parse('2018-10-06'), 'Juan3', 'bad')
     end
 
     it 'returns child of Item' do
