@@ -1,7 +1,7 @@
 require 'date'
 require_relative './test_helper'
-require_relative '../classes/item.rb'
-require_relative '../classes/game.rb'
+require_relative '../classes/item'
+require_relative '../classes/game'
 
 # Team member 3
 RSpec.describe Game do

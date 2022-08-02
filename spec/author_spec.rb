@@ -13,7 +13,7 @@ RSpec.describe Author do
   it 'should throw an ArgumentError if incorrect number of parameters' do
     expect { Author.new }.to raise_error(ArgumentError)
   end
-  
+
   it 'should add_item' do
     game1 = Game.new(Date.parse('2016-03-26'), Date.parse('2018-07-01'), false)
     author1 = Author.new('Juan', 'Leyrado')
