@@ -1,6 +1,7 @@
 class Author
   # Team member 3
   attr_accessor :first_name, :last_name
+  attr_reader :id, :items
 
   def initialize(first_name, last_name, id = Random.rand(1..1000))
     # constructor
@@ -12,7 +13,7 @@ class Author
 
   def add_item(item)
     # implementation
-    @items.push(item) unless items.include?(item)
+    @items.push(item) unless @items.include?(item)
     item.author = self unless item.author == self
   end
 end
