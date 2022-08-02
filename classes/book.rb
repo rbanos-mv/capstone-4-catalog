@@ -5,7 +5,7 @@ class Book < Item
   attr_accessor :published_date
 
   def initialize(published_date, publisher, cover_state, id = rand(1..1000))
-    super(id, published_date)
+    super(published_date, id)
     @id = id
     @title = title
     @publisher = publisher
