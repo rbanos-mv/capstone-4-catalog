@@ -16,7 +16,5 @@ module BookModule
     # implementation
   end
 
-  def list_labels
-    # implementation
-  end
+  
 end
