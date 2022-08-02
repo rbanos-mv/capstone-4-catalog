@@ -2,9 +2,9 @@ class Game < Item
   # Team member 3
   attr_accessor :last_played_at, :multiplayer
 
-  def initialize(publish_date, last_played_at, multiplayer)
+  def initialize(title, publish_date, last_played_at, multiplayer)
     # constructor
-    super(publish_date)
+    super(title, publish_date)
     @last_played_at = last_played_at
     @multiplayer = multiplayer
   end
