@@ -16,4 +16,8 @@ class Author
     @items.push(item) unless @items.include?(item)
     item.author = self unless item.author == self
   end
+
+  def to_s
+    "id: #{id.to_s.rjust(4)} First Name: #{author.first_name} Last Name: #{author.last_name}"
+  end
 end
