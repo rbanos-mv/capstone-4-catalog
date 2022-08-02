@@ -14,8 +14,8 @@ class Game < Item
   end
 
   def to_s
-    "id: #{id.to_s.rjust(4)} genre: #{genre.name} title: #{title} author: #{author.first_name} \
-#{author.last_name} publish date: #{publish_date} multiplayer: #{multiplayer ? 'YES' : 'NO'}"
+    "Id: #{id.to_s.rjust(4)} Genre: #{genre.name} Title: #{@title} Author: #{author.first_name} \
+#{author.last_name} Publish date: #{publish_date} Multiplayer: #{multiplayer ? 'YES' : 'NO'}"
   end
 
   private

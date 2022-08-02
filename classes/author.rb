@@ -18,6 +18,6 @@ class Author
   end
 
   def to_s
-    "id: #{id.to_s.rjust(4)} First Name: #{author.first_name} Last Name: #{author.last_name}"
+    "Id: #{id.to_s.rjust(4)} First Name: #{@first_name} Last Name: #{@last_name}"
   end
 end
