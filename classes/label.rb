@@ -3,7 +3,7 @@ class Label
   attr_reader :id, :items
   attr_accessor :title, :color
 
-  def initialize(title, color, id: rand(1..1000))
+  def initialize(title, color, id = rand(1..1000))
     # constructor
     @id = id
     @title = title
@@ -13,7 +13,7 @@ class Label
 
   def add_item(item)
     # implementation
-    @item = item
-    item.label << self
+    @items << item unless @items.include?(item)
+    item.label = self unless item.label == self
   end
 end
