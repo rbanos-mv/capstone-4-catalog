@@ -13,7 +13,7 @@ module InputModule
     rescue Date::Error
       puts 'Invalid date'
     else
-      return date.strftime('%Y-%m-%d')
+      return date
     end
   end
 

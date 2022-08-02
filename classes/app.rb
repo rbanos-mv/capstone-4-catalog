@@ -1,3 +1,4 @@
+require_relative '../modules/input_module'
 require_relative '../modules/book_module'
 require_relative '../modules/label_module'
 require_relative '../modules/genre_module'
@@ -10,9 +11,17 @@ class App
   include PreserveModule
 
   def initialize
-    # constructor
+    @genres = []
+    @albums = []
+    @authors = []
+    @books = []
+    @games = []
+    @labels = []
+
     load_data
   end
+
+  include InputModule
 
   # *****************
   # Team member 1
