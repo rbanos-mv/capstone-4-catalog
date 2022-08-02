@@ -1,9 +1,10 @@
 require_relative './test_helper'
+require_relative '../classes/author'
 
 # Team member 3
 RSpec.describe Author do
   it 'should be an instance of Author' do
-    author = create_author
+    author = Author.new('Juan', 'Leyrado')
 
     expect(author).to be_an_instance_of(Author)
   end
