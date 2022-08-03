@@ -22,13 +22,13 @@ RSpec.describe Game do
   end
 
   it 'should not archive a game if last played newer than 2 years' do
-    game2 = Game.new('Titulo', Date.parse('2002-03-26'), Date.parse('2021-07-01'), false)
+    game2 = Game.new('Titulo', Date.parse('2002-03-26'),  Date.today -  10, false)
     game2.move_to_archive
     expect(game2.archived).to be false
   end
 
   it 'should not archive a game if publish date newer than 10 years' do
-    game3 = Game.new('Titulo', Date.parse('2016-03-26'), Date.parse('2018-07-01'), false)
+    game3 = Game.new('Titulo',  Date.today - (365 * 5), Date.parse('2018-07-01'), false)
     game3.move_to_archive
     expect(game3.archived).to be false
   end

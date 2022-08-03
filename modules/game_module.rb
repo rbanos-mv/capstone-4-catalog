@@ -26,16 +26,21 @@ module GameModule
 genre_name, label_title, label_color = ask_game_data
 
     game = Game.new(title, publish_date, last_played_at, multiplayer)
-    author = Author.new(author_first_name, author_last_name)
+    author = @authors.find { |author| author.first_name + author.last_name == author_first_name + author_last_name}
+    if author == nil
+      author = Author.new(author_first_name, author_last_name)
+      @authors.push(author)
+    end
     game.author = author
+
     genre = Genre.new(genre_name)
     game.genre = genre
     label = Label.new(label_title, label_color)
     game.label = label
-    @games.push(game)
-    @authors.push(author)
     @genres.push(genre)
     @labels.push(label)
+
+    @games.push(game)
   end
 
   def list_games

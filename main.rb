@@ -69,7 +69,7 @@ class Main
       break if user_input == 10
     end
     puts "\nExiting the application..."
-    sleep 2
+    sleep 1
   end
 end
 
