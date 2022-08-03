@@ -13,7 +13,7 @@ class Genre
     item.genre = self unless item.genre == self
   end
 
-  def self.name
+  def self.header_name
     'GENRES'
   end
 
@@ -25,7 +25,7 @@ class Genre
     width = row.length + margin
     line = ''.center(row.length, '-').rjust(width)
     row = '*** EMPTY LIST ***'.center(row.length) if empty
-    entity_name = Genre.name.center(row.length)
+    entity_name = Genre.header_name.center(row.length)
 
     ["\n#{entity_name}\n#{line}\n#{row.rjust(width)}\n#{line}", line]
   end
@@ -38,5 +38,16 @@ class Genre
     return row.rjust(row.length + margin) if full
 
     name_col
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [name, id]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['data'])
   end
 end
