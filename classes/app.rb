@@ -7,7 +7,6 @@ require_relative '../modules/author_module'
 require_relative '../modules/game_module'
 require_relative '../modules/preserve_module'
 
-
 class App
   include PreserveModule
 
