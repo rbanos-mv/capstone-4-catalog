@@ -40,7 +40,7 @@ class App
 
   # label
   include LabelModule
-  
+
   # *****************
   # Team member 2
   # *****************
