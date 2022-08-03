@@ -6,6 +6,8 @@ require_relative '../modules/music_album_module'
 require_relative '../modules/author_module'
 require_relative '../modules/game_module'
 require_relative '../modules/preserve_module'
+require_relative '../classes/reader'
+require_relative '../classes/writer'
 
 class App
   include PreserveModule
@@ -17,6 +19,13 @@ class App
     @books = []
     @games = []
     @labels = []
+    @writer = Writer.new
+    @reader = Reader.new(@books, @labels)
+    begin
+      @reader.read
+    rescue Errno::ENOENT
+      puts 'No data file found.'
+    end
 
     load_data
   end
@@ -31,7 +40,7 @@ class App
 
   # label
   include LabelModule
-
+  
   # *****************
   # Team member 2
   # *****************

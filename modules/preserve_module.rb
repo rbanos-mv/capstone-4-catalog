@@ -41,6 +41,7 @@ module PreserveModule
     # serialize('games.json', @games)
     serialize('genres.json', @genres)
     # serialize('labels.json', @labels)
+    @writer.close_all
   end
 
   def load_default_authors(list)

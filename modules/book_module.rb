@@ -1,6 +1,7 @@
 require './classes/book'
 require './classes/label'
 require 'date'
+require './classes/writer'
 module BookModule
   # Team member 1
 
@@ -24,6 +25,8 @@ module BookModule
     new_book.label = new_label
     @books.push(new_book)
     @labels.push(new_label)
+    @writer.books(title: title, published_date: published_date, publisher: publisher, cover_state: cover_state)
+    @writer.labels(title: title, color: color)
   end
 
   def list_books
