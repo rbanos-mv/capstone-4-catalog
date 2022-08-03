@@ -9,7 +9,7 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  def self.name
+  def self.header_name
     'MUSIC ALBUMS'
   end
 
@@ -24,7 +24,7 @@ class MusicAlbum < Item
     width = row.length + margin
     line = ''.center(row.length, '-').rjust(width)
     row = '*** EMPTY LIST ***'.center(row.length) if empty
-    entity_name = MusicAlbum.name.center(row.length)
+    entity_name = MusicAlbum.header_name.center(row.length)
 
     ["\n#{entity_name}\n#{line}\n#{row.rjust(width)}\n#{line}", line]
   end
@@ -38,6 +38,20 @@ class MusicAlbum < Item
 
     row = "#{id_col}| #{genre_col} | #{title_col} | #{publish_col} | #{spotify_col} |"
     row.rjust(row.length + margin)
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [title, publish_date, id, on_spotify, genre]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    title, publish_date, id, on_spotify, genre = object['data']
+    object = new(title, publish_date, id, on_spotify: on_spotify)
+    object.genre = genre
+    object
   end
 
   private
