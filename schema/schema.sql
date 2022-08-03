@@ -2,7 +2,12 @@
 CREATE DATABASE catalog_of_things;
 
 -- 3 CREATE TABLE author
-
+CREATE TABLE author (
+    id int,
+    first_name varchar(25),
+    last_name varchar(25),
+    PRIMARY KEY (id),
+);
 -- 1 CREATE TABLE label
 
 -- 2 CREATE TABLE genre
@@ -14,6 +19,21 @@ CREATE TABLE genre (
 -- 1 CREATE TABLE book
 
 -- 3 CREATE TABLE game
+
+CREATE TABLE game(
+  id              int PRIMARY KEY,
+  title           VARCHAR(255),
+  publish_date    DATE,
+  last_played_at  DATE,
+  author_id       INTEGER,
+  genre_id        INTEGER,
+  label_id        INTEGER,
+  multiplayer     BOOLEAN,
+  archived        BOOLEAN,
+FOREIGN KEY (author_id) REFERENCES author(id),
+FOREIGN KEY (genre_id) REFERENCES genre(id),
+FOREIGN KEY (label_id) REFERENCES label(id),
+);
 
 -- 2 CREATE TABLE music_album
 CREATE TABLE music_album(
