@@ -16,4 +16,15 @@ class Label
     @items << item unless @items.include?(item)
     item.label = self unless item.label == self
   end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [title, color, id]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['data'])
+  end
 end

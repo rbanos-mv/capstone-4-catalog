@@ -24,9 +24,9 @@ module PreserveModule
 
     @authors = deserialize('authors.json')
     @genres = deserialize('genres.json')
-    # @labels = deserialize('labels.json')
+    @labels = deserialize('labels.json')
     @albums = deserialize('albums.json')
-    # @books = deserialize('books.json')
+    @books = deserialize('books.json')
     @games = deserialize('games.json')
 
     load_default_authors(@authors)
@@ -37,10 +37,10 @@ module PreserveModule
   def save_data
     serialize('albums.json', @albums)
     serialize('authors.json', @authors)
-    # serialize('books.json', @books)
+    serialize('books.json', @books)
     serialize('games.json', @games)
     serialize('genres.json', @genres)
-    # serialize('labels.json', @labels)
+    serialize('labels.json', @labels)
   end
 
   def load_default_authors(list)
