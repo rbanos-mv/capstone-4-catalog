@@ -4,6 +4,11 @@ CREATE DATABASE catalog_of_things;
 -- 3 CREATE TABLE author
 
 -- 1 CREATE TABLE label
+CREATE TABLE label (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    title TEXT,
+    color TEXT
+);
 
 -- 2 CREATE TABLE genre
 CREATE TABLE genre (
@@ -12,6 +17,14 @@ CREATE TABLE genre (
 );
 
 -- 1 CREATE TABLE book
+CREATE TABLE book (
+    id INT,
+    title TEXT,
+    publish_date  DATE,
+    publihser TEXT,
+    cover_state TEXT,
+    FOREIGN KEY (id) REFERENCES items (id)
+);
 
 -- 3 CREATE TABLE game
 
