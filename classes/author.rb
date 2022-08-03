@@ -31,5 +31,4 @@ class Author
   def self.json_create(object)
     new(*object['data'])
   end
-
 end
