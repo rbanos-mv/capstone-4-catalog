@@ -10,6 +10,8 @@ module AuthorModule
   end
 
   def list_authors
-    # implementation
+    @authors.each do |author|
+      puts author.to_s
+    end
   end
 end

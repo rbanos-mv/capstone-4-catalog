@@ -13,7 +13,41 @@ class Genre
     item.genre = self unless item.genre == self
   end
 
-  def to_s
-    "id: #{id}  name: #{name}"
+  def self.header_name
+    'GENRES'
+  end
+
+  def self.header(full: true, margin: 0, empty: false)
+    id_col = full ? '|    ID ' : ''
+    name_col = 'NAME'.ljust(30)
+
+    row = "#{id_col}| #{name_col} |"
+    width = row.length + margin
+    line = ''.center(row.length, '-').rjust(width)
+    row = '*** EMPTY LIST ***'.center(row.length) if empty
+    entity_name = Genre.header_name.center(row.length)
+
+    ["\n#{entity_name}\n#{line}\n#{row.rjust(width)}\n#{line}", line]
+  end
+
+  def to_s(full: true, margin: 0)
+    id_col = full ? "| #{id.to_s.rjust(5)} " : ''
+    name_col = name.ljust(30)
+
+    row = "#{id_col}| #{name_col} |"
+    return row.rjust(row.length + margin) if full
+
+    name_col
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'data' => [name, id]
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(*object['data'])
   end
 end

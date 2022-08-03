@@ -13,6 +13,11 @@ class Game < Item
     @archived = true if can_be_archived?
   end
 
+  def to_s
+    "Id: #{id.to_s.rjust(4)} Genre: #{genre.name} Title: #{@title} Author: #{author.first_name} \
+#{author.last_name} Publish date: #{publish_date} Multiplayer: #{multiplayer ? 'YES' : 'NO'}"
+  end
+
   private
 
   def can_be_archived?
