@@ -22,12 +22,12 @@ module PreserveModule
   def load_data
     FileUtils.mkdir_p(path)
 
-    # @authors = deserialize('authors.json')
+    @authors = deserialize('authors.json')
     @genres = deserialize('genres.json')
-    # @labels = deserialize('labels.json')
+    @labels = deserialize('labels.json')
     @albums = deserialize('albums.json')
-    # @books = deserialize('books.json')
-    # @games = deserialize('games.json')
+    @books = deserialize('books.json')
+    @games = deserialize('games.json')
 
     load_default_authors(@authors)
     load_default_genres(@genres)
@@ -36,12 +36,11 @@ module PreserveModule
 
   def save_data
     serialize('albums.json', @albums)
-    # serialize('authors.json', @authors)
-    # serialize('books.json', @books)
-    # serialize('games.json', @games)
+    serialize('authors.json', @authors)
+    serialize('books.json', @books)
+    serialize('games.json', @games)
     serialize('genres.json', @genres)
-    # serialize('labels.json', @labels)
-    @writer.close_all
+    serialize('labels.json', @labels)
   end
 
   def load_default_authors(list)
@@ -55,7 +54,7 @@ module PreserveModule
       { first_name: 'William', last_name: 'Shakespeare' }
     ]
     defaults.map.with_index do |default, index|
-      list << Author.new(default['first_name'], default['last_name'], index + 1)
+      list << Author.new(default[:first_name], default[:last_name], index + 1)
     end
   end
 
@@ -81,7 +80,7 @@ module PreserveModule
       { title: 'Science', color: 'Brown' }
     ]
     defaults.map.with_index do |default, index|
-      list << Label.new(default['title'], default['color'], index + 1)
+      list << Label.new(default[:title], default[:color], index + 1)
     end
   end
 end
