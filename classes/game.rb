@@ -13,7 +13,8 @@ class Game < Item
     @archived = true if can_be_archived?
   end
 
-  def self.row_generator(id, genre_name, title, author, publish, multiplayer)
+  def self.row_generator(params)
+    id, genre_name, title, author, publish, multiplayer = params
     "| #{id.to_s.rjust(4)} | #{genre_name.ljust(15)} | #{title.ljust(20)} | #{author.ljust(20)} \
 | #{publish.to_s.ljust(10)} | #{multiplayer.ljust(7)} |"
   end
@@ -29,7 +30,7 @@ class Game < Item
   def to_s
     author_name = "#{author.first_name} #{author.last_name}"
     is_multiplayer = multiplayer ? 'YES' : 'NO'
-    self.class.row_generator(id, genre.name, title, author_name, publish_date, is_multiplayer)
+    self.class.row_generator([id, genre.name, title, author_name, publish_date, is_multiplayer])
   end
 
   def to_json(*args)
