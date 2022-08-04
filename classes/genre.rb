@@ -13,29 +13,20 @@ class Genre
     item.genre = self unless item.genre == self
   end
 
-  def self.header_name
-    'GENRES'
+  def self.row_generator(id, name)
+    "| #{id.to_s.rjust(4)} | #{name.ljust(20)} |"
   end
 
-  def self.header(full: true, margin: 0, empty: false)
-    id_col = full ? '|    ID ' : ''
-    name_col = 'NAME'.ljust(30)
-
-    row = "#{id_col}| #{name_col} |"
-    width = row.length + margin
-    line = ''.center(row.length, '-').rjust(width)
-    row = '*** EMPTY LIST ***'.center(row.length) if empty
-    entity_name = Genre.header_name.center(row.length)
-
-    ["\n#{entity_name}\n#{line}\n#{row.rjust(width)}\n#{line}", line]
+  def self.header
+    width = 31
+    [
+      row_generator('ID', 'NAME'),
+      ''.center(width, '-')
+    ]
   end
 
-  def to_s(full: true, margin: 0)
-    id_col = full ? "| #{id.to_s.rjust(5)} " : ''
-    name_col = name.ljust(30)
-
-    row = "#{id_col}| #{name_col} |"
-    return row.rjust(row.length + margin) if full
+  def to_s(full: true)
+    return self.class.row_generator(id, name) if full
 
     name_col
   end

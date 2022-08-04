@@ -17,8 +17,20 @@ class Author
     item.author = self unless item.author == self
   end
 
+  def self.row_generator(id, first_name, last_name)
+    "| #{id.to_s.rjust(4)} | #{first_name.ljust(20)} | #{last_name.ljust(20)} |"
+  end
+
+  def self.header
+    width = 54
+    [
+      row_generator('ID', 'FIRST NAME', 'LAST_NAME'),
+      ''.center(width, '-')
+    ]
+  end
+
   def to_s
-    "Id: #{id.to_s.rjust(4)} First Name: #{@first_name} Last Name: #{@last_name}"
+    self.class.row_generator(id, @first_name, @last_name)
   end
 
   def to_json(*args)

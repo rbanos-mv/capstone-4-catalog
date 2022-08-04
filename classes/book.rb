@@ -15,6 +15,24 @@ class Book < Item
     super || @cover_state == 'bad'
   end
 
+  def self.row_generator(id, label, title, publisher, published, cover)
+    "| #{id.to_s.rjust(4)} | #{label.ljust(15)} | #{title.ljust(20)} | #{publisher.ljust(20)} \
+| #{published.to_s.ljust(10)} | #{cover.ljust(7)} |"
+  end
+
+  def self.header
+    width = 95
+    [
+      row_generator('ID', 'LABEL', 'TITLE', 'PUBLISHER', 'PUBLISHED', 'COVER'),
+      ''.center(width, '-')
+    ]
+  end
+
+  def to_s
+    label_s = "#{label.title} / #{label.color}"
+    self.class.row_generator(id, label_s, title, publisher, publish_date, cover_state)
+  end
+
   def to_json(*args)
     {
       JSON.create_id => self.class.name,

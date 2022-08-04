@@ -9,35 +9,21 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  def self.header_name
-    'MUSIC ALBUMS'
+  def self.row_generator(id, genre, title, publish, spotify)
+    "| #{id.to_s.rjust(4)} | #{genre.ljust(20)} | #{title.ljust(20)} \
+| #{publish.ljust(10)} | #{spotify.ljust(7)} |"
   end
 
-  def self.header(full: true, margin: 0, empty: false)
-    id_col = full ? '|    ID ' : ''
-    genre_col = 'GENRE'.ljust(30)
-    title_col = 'TITLE'.ljust(30)
-    publish_col = 'PUBLISHED'.center(10)
-    spotify_col = 'SPOTIFY'.center(7)
-
-    row = "#{id_col}| #{genre_col} | #{title_col} | #{publish_col} | #{spotify_col} |"
-    width = row.length + margin
-    line = ''.center(row.length, '-').rjust(width)
-    row = '*** EMPTY LIST ***'.center(row.length) if empty
-    entity_name = MusicAlbum.header_name.center(row.length)
-
-    ["\n#{entity_name}\n#{line}\n#{row.rjust(width)}\n#{line}", line]
+  def self.header
+    width = 77
+    [
+      row_generator('ID', 'GENRE', 'TITLE', 'PUBLISHED', 'SPOTIFY'),
+      ''.center(width, '-')
+    ]
   end
 
-  def to_s(full: true, margin: 0)
-    id_col = full ? "| #{id.to_s.rjust(5)} " : ''
-    genre_col = genre.name.ljust(30)
-    title_col = title.ljust(30)
-    publish_col = publish_date.to_s.center(10)
-    spotify_col = (on_spotify ? 'YES' : 'NO').center(7)
-
-    row = "#{id_col}| #{genre_col} | #{title_col} | #{publish_col} | #{spotify_col} |"
-    row.rjust(row.length + margin)
+  def to_s
+    self.class.row_generator(id, genre.name, title, publish_date, (on_spotify ? 'YES' : 'NO'))
   end
 
   def to_json(*args)
