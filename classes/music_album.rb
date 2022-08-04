@@ -11,7 +11,7 @@ class MusicAlbum < Item
 
   def self.row_generator(id, genre, title, publish, spotify)
     "| #{id.to_s.rjust(4)} | #{genre.ljust(20)} | #{title.ljust(20)} \
-| #{publish.ljust(10)} | #{spotify.ljust(7)} |"
+| #{publish.to_s.ljust(10)} | #{spotify.ljust(7)} |"
   end
 
   def self.header
