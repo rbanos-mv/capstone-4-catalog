@@ -7,48 +7,40 @@ module GameModule
   # Team member 3
 
   def ask_game_data
-    title = string_input('Title of the game: ')
-    publish_date = date_input('Publication date (yyyy-mm-dd): ')
-    last_played_at = date_input('Last played date (yyyy-mm-dd): ')
-    multiplayer = boolean_input('Is multiplayer? (y/n): ')
-
-    author_first_name = string_input('Author First Name: ')
-    author_last_name = string_input('Author Last Name: ')
-    genre_name = string_input('Genre: ')
-    label_title = string_input('Label Title: ')
-    label_color = string_input('Label color: ')
-    [title, publish_date, last_played_at, multiplayer, author_first_name, author_last_name, \
-     genre_name, label_title, label_color]
+    head = 'ADD NEW GAME'.center(50)
+    puts "\n#{head}"
+    [
+      string_input('Title of the game: '),
+      date_input('Publication date (yyyy-mm-dd): '),
+      date_input('Last played date (yyyy-mm-dd): '),
+      boolean_input('Is multiplayer? (y/n): ')
+    ]
   end
 
   def add_game
-    title, publish_date, last_played_at, multiplayer, author_first_name, author_last_name, \
-genre_name, label_title, label_color = ask_game_data
-
+    title, publish_date, last_played_at, multiplayer = ask_game_data
     game = Game.new(title, publish_date, last_played_at, multiplayer)
-    author = @authors.find { |auth| auth.first_name + auth.last_name == author_first_name + author_last_name }
-    if author.nil?
-      author = Author.new(author_first_name, author_last_name)
-      @authors.push(author)
-    end
-    game.author = author
-    genre = @genres.find { |gen| gen.name == genre_name }
-    if genre.nil?
-      genre = Genre.new(genre_name)
-      @genres.push(genre)
-    end
-    game.genre = genre
 
-    label = Label.new(label_title, label_color)
-    game.label = label
-    @labels.push(label)
+    game.author = add_author
+    game.genre = add_genre
+    game.label = add_label
 
     @games.push(game)
   end
 
   def list_games
-    @games.each do |game|
-      puts game.to_s
+    header, line = Game.header
+    tname = 'ALL GAMES'.center(line.length)
+    puts "\n#{tname}\n#{line}"
+
+    if @games.empty?
+      puts '*** EMPTY LIST ***'.center(line.length)
+    else
+      table = @games.map do |game|
+        game
+      end.join("\n")
+      puts "#{header}\n#{line}\n#{table}"
     end
+    puts line
   end
 end

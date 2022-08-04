@@ -2,12 +2,15 @@ module GenreModule
   # Team member 2
 
   def ask_genre_data
-    string_input('Genre name: ')
+    string_input('Genre name: ').capitalize
   end
 
   def add_genre
-    genre_name = ask_genre_data
-    @genres << Genre.new(genre_name)
+    name = ask_genre_data
+    @genres.find(lambda {
+      @genres << Genre.new(name)
+      @genres.last
+    }) { |genre| genre.name == name }
   end
 
   def select_genre
@@ -28,14 +31,28 @@ module GenreModule
   end
 
   def list_genres
-    header, line = Genre.header(empty: @genres.empty?)
+    header, line = Genre.header
+    tname = 'ALL GENRES'.center(line.length)
+    puts "\n#{tname}\n#{line}"
+
     if @genres.empty?
-      puts header
+      puts '*** EMPTY LIST ***'.center(line.length)
     else
-      list = @genres.map do |genre|
+      table = @genres.map do |genre|
         genre
       end.join("\n")
-      puts "#{header}\n#{list}\n#{line}"
+      puts "#{header}\n#{line}\n#{table}"
     end
+    puts line
+
+    # header, line = Genre.header(empty: @genres.empty?)
+    # if @genres.empty?
+    #   puts header
+    # else
+    #   list = @genres.map do |genre|
+    #     genre
+    #   end.join("\n")
+    #   puts "#{header}\n#{list}\n#{line}"
+    # end
   end
 end
