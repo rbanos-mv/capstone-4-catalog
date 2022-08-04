@@ -39,17 +39,5 @@ module BookModule
       puts "#{header}\n#{line}\n#{table}"
     end
     puts line
-
-    # implementation
-    #     puts "\nAll books"
-
-    #     if @books.length.zero?
-    #       puts 'Book list is empty. Choose option (7) to add a book'
-    #     else
-    #       @books.map do |book|
-    #         puts "Publication Date: #{book.publish_date}, Publisher: #{book.publisher}, \
-    # State: #{book.cover_state}"
-    #       end
-    #     end
   end
 end

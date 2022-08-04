@@ -38,15 +38,4 @@ module MusicAlbumModule
     end
     puts line
   end
-
-  # header, line = MusicAlbum.header(empty: @albums.empty?)
-  # if @albums.empty?
-  #   puts header
-  # else
-  #   list = @albums.map do |album|
-  #     album
-  #   end.join("\n")
-  #   puts "#{header}\n#{list}\n#{line}"
-  # end
-  # end
 end

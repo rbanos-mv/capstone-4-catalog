@@ -44,15 +44,5 @@ module GenreModule
       puts "#{header}\n#{line}\n#{table}"
     end
     puts line
-
-    # header, line = Genre.header(empty: @genres.empty?)
-    # if @genres.empty?
-    #   puts header
-    # else
-    #   list = @genres.map do |genre|
-    #     genre
-    #   end.join("\n")
-    #   puts "#{header}\n#{list}\n#{line}"
-    # end
   end
 end
