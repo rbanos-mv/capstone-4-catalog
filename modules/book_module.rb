@@ -6,38 +6,38 @@ module BookModule
   # Team member 1
 
   def ask_book_data
-    # implementation
+    head = 'ADD NEW BOOK'.center(50)
+    puts "\n#{head}"
+    [
+      string_input('Title: ').capitalize,
+      date_input('Date of publication [yyyy-mm-dd]: '),
+      string_input('Publisher: ').capitalize,
+      letter_input("Cover state (Enter 'good' or 'bad'): ", %w[GOOD BAD]).downcase
+    ]
   end
 
   def add_book
-    # implementation
-    puts "\nAdd a book"
-    print 'Title: '
-    title = gets.chomp
-    print 'Color: '
-    color = gets.chomp
-    published_date = date_input('Date of publication [yyyy-mm-dd]: ')
-    print 'Publisher: '
-    publisher = gets.chomp
-    cover_state = letter_input("Cover state (Enter 'good' or 'bad'): ", %w[GOOD BAD]).downcase
-    new_label = Label.new(title, color)
+    title, published_date, publisher, cover_state = ask_book_data
     new_book = Book.new(title, published_date, publisher, cover_state)
-    new_book.label = new_label
+
+    new_book.label = add_label
+
     @books.push(new_book)
-    @labels.push(new_label)
   end
 
   def list_books
-    # implementation
-    puts "\nAll books"
+    header, line = Book.header
+    tname = 'ALL BOOKS'.center(line.length)
+    puts "\n#{tname}\n#{line}"
 
-    if @books.length.zero?
-      puts 'Book list is empty. Choose option (7) to add a book'
+    if @books.empty?
+      puts '*** EMPTY LIST ***'.center(line.length)
     else
-      @books.map do |book|
-        puts "Publication Date: #{book.publish_date}, Publisher: #{book.publisher}, \
-State: #{book.cover_state}"
-      end
+      table = @books.map do |book|
+        book
+      end.join("\n")
+      puts "#{header}\n#{line}\n#{table}"
     end
+    puts line
   end
 end

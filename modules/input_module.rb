@@ -32,10 +32,9 @@ module InputModule
   end
 
   def boolean_input(prompt)
-    loop do
-      input = string_input(prompt)
-      return false if %w[false False 0 FALSE N n].include?(input)
-      return true if %w[true True 1 TRUE Y y].include?(input)
-    end
+    false_options = %w[0 F FALSE N NO]
+    true_options = %w[1 T TRUE Y YES]
+    input = letter_input(prompt, false_options + true_options)
+    true_options.include?(input)
   end
 end

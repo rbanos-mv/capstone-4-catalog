@@ -6,6 +6,10 @@
 > In this project, we create a console app that will help you to keep a record of different types of things you won: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files but we have also prepared a database with tables structure analogical to our program's class structure.
 > ![image](https://user-images.githubusercontent.com/100373071/182209178-8060926a-89ab-4eae-aa14-a7bc46866adf.png)
 
+## Video presentation
+
+[Haga click aquí](https://drive.google.com/file/d/1_fBqIcG-F7V9BNJcUUl7ceZt6KwZmpna/view)
+
 ## Built With
 
 - Ruby
@@ -26,6 +30,7 @@ Type these commands into the terminal:
 ```
 git clone https://github.com/rbanos-mv/capstone-4-catalog.git
 cd capstone-4-catalog
+bundle install
 ```
 
 ### Run

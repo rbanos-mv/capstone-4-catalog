@@ -2,23 +2,33 @@ module LabelModule
   # Team member 1
 
   def ask_label_data
-    # implementation
+    [
+      string_input('Label title: ').capitalize,
+      string_input('Label color: ').capitalize
+    ]
   end
 
   def add_label
-    # implementation
+    title, color = ask_label_data
+    @labels.find(lambda {
+      @labels << Label.new(title, color)
+      @labels.last
+    }) { |label| label.title == title && label.color == color }
   end
 
   def list_labels
-    # implementation
-    puts "\nAll Labels"
+    header, line = Label.header
+    tname = 'ALL LABELS'.center(line.length)
+    puts "\n#{tname}\n#{line}"
 
-    if @labels.length.zero?
-      puts 'No labels found. Choose option (7) to add a book with label'
+    if @labels.empty?
+      puts '*** EMPTY LIST ***'.center(line.length)
     else
-      @labels.map do |label|
-        puts "Title: #{label.title}, Color: #{label.color}"
-      end
+      table = @labels.map do |label|
+        label
+      end.join("\n")
+      puts "#{header}\n#{line}\n#{table}"
     end
+    puts line
   end
 end

@@ -17,6 +17,22 @@ class Label
     item.label = self unless item.label == self
   end
 
+  def self.row_generator(id, title, color)
+    "| #{id.to_s.rjust(4)} | #{title.ljust(20)} | #{color.ljust(20)} |"
+  end
+
+  def self.header
+    width = 54
+    [
+      row_generator('ID', 'TITLE', 'COLOR'),
+      ''.center(width, '-')
+    ]
+  end
+
+  def to_s
+    self.class.row_generator(id, @title, @color)
+  end
+
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
