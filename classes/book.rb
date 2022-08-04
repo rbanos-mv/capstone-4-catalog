@@ -29,7 +29,7 @@ class Book < Item
   end
 
   def to_s
-    label_s = "#{label.title} / #{label.color}"
+    label_s = "#{label.title} / #{label.color}"[0...15]
     self.class.row_generator(id, label_s, title, publisher, publish_date, cover_state)
   end
 
