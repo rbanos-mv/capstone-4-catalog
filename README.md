@@ -8,7 +8,7 @@
 
 ## Video presentation
 
-[Haga click aquí](https://drive.google.com/file/d/1_fBqIcG-F7V9BNJcUUl7ceZt6KwZmpna/view)
+[Click here](https://drive.google.com/file/d/1_fBqIcG-F7V9BNJcUUl7ceZt6KwZmpna/view)
 
 ## Built With
 
