@@ -24,7 +24,7 @@ class Book < Item
   def self.header
     width = 95
     [
-      row_generator('ID', 'LABEL', 'TITLE', 'PUBLISHER', 'PUBLISHED', 'COVER'),
+      row_generator(%w[ID LABEL TITLE PUBLISHER PUBLISHED COVER]),
       ''.center(width, '-')
     ]
   end

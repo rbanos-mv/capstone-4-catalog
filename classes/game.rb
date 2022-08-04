@@ -22,13 +22,13 @@ class Game < Item
   def self.header
     width = 95
     [
-      row_generator('ID', 'GENRE', 'TITLE', 'AUTHOR', 'PUBLISHED', 'MULTI'),
+      row_generator(%w[ID GENRE TITLE AUTHOR PUBLISHED MULTI]),
       ''.center(width, '-')
     ]
   end
 
   def to_s
-    author_name = "#{author.first_name} #{author.last_name}"
+    author_name = "#{author.first_name} #{author.last_name}"[0...20]
     is_multiplayer = multiplayer ? 'YES' : 'NO'
     self.class.row_generator([id, genre.name, title, author_name, publish_date, is_multiplayer])
   end
